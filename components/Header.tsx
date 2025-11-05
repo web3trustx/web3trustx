@@ -25,9 +25,11 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-              <img src="/logo.png" alt="Web3TrustX Logo" className="w-10 h-10 object-contain" />
-            </div>
+            <img 
+              src="/logo.png" 
+              alt="Web3TrustX Logo" 
+              className="w-10 h-10 object-contain transform group-hover:scale-110 transition-transform duration-300" 
+            />
             <span className="text-xl font-display font-bold text-white hidden sm:block">
               Web3TrustX
             </span>
