@@ -26,10 +26,12 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">W3</span>
-              </div>
-              <span className="text-xl font-display font-bold text-gradient">
+              <img 
+                src="/logo.png" 
+                alt="Web3TrustX Logo" 
+                className="w-10 h-10 object-contain" 
+              />
+              <span className="text-xl font-display font-bold text-white">
                 Web3TrustX
               </span>
             </Link>
