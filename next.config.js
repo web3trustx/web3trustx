@@ -4,8 +4,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/web3trustx-website' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/web3trustx-website/' : '',
+  // No basePath needed for web3trustx.github.io/web3trustx (using custom domain)
   trailingSlash: true,
 }
 
