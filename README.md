@@ -384,7 +384,7 @@ MIT License - see LICENSE file for details.
 - **Website**: [https://web3trustx.com](https://web3trustx.com)
 - **Telegram**: [t.me/Web3TrustX](https://t.me/Web3TrustX)
 - **Twitter/X**: [@Web3TrustX](https://x.com/Web3TrustX)
-- **Discord**: [discord.gg/web3trustx](https://discord.gg/web3trustx)
+- **Discord**: [discord.gg/S8fAQkhN4t](https://discord.gg/S8fAQkhN4t)
 
 ---
 

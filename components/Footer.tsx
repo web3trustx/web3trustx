@@ -16,7 +16,7 @@ export default function Footer() {
   const communityLinks = [
     { href: 'https://t.me/Web3TrustX', label: 'Telegram', external: true },
     { href: 'https://x.com/Web3TrustX', label: 'X (Twitter)', external: true },
-    { href: 'https://discord.gg/web3trustx', label: 'Discord', external: true },
+    { href: 'https://discord.gg/S8fAQkhN4t', label: 'Discord', external: true },
   ];
 
   return (
@@ -62,7 +62,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://discord.gg/web3trustx"
+                href="https://discord.gg/S8fAQkhN4t"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 bg-white/5 hover:bg-primary rounded-lg flex items-center justify-center transition-colors duration-200"
