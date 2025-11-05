@@ -4,8 +4,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/web3trustx' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/web3trustx/' : '',
+  // No basePath needed when using custom domain (CNAME)
+  // basePath is only needed for github.io/repository URLs
   trailingSlash: true,
 }
 
