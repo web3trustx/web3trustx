@@ -61,33 +61,73 @@ export const translations = {
     
     // Ecosystem Page
     ecosystem: {
-      title: 'El Ecosistema Web3TrustX',
-      subtitle: 'Soluciones integradas para un Web3 más seguro',
-      modules: {
-        trusthubx: {
-          title: 'TrustHubX',
-          description: 'Hub central de información verificada sobre proyectos blockchain. Base de datos completa con métricas, auditorías y análisis de riesgos.',
-        },
-        trustscanner: {
-          title: 'TrustScanner',
-          description: 'Herramienta de análisis técnico de contratos inteligentes. Detección automatizada de vulnerabilidades y patrones sospechosos.',
-        },
-        trustscore: {
-          title: 'TrustScore',
-          description: 'Sistema de puntuación multifactorial para proyectos. Calificación objetiva basada en transparencia, equipo, tokenomics y auditorías.',
-        },
-        trustshield: {
-          title: 'TrustShield',
-          description: 'Protección en tiempo real contra scams y phishing. Alertas instantáneas y verificación de URLs y contratos.',
-        },
-        trustacademy: {
-          title: 'TrustAcademy',
-          description: 'Plataforma educativa con cursos, webinars y certificaciones. Formación continua para usuarios y desarrolladores.',
-        },
-        trustdao: {
-          title: 'TrustDAO',
-          description: 'Gobernanza descentralizada del ecosistema. Los holders de $WTRUSTX deciden el futuro de la plataforma.',
-        },
+      title: 'Explora el Ecosistema Web3TrustX',
+      subtitle: 'Herramientas modulares diseñadas para construir confianza en Web3',
+      
+      // Categoría 1: Confianza y análisis de proyectos
+      trustAnalysis: {
+        title: 'Confianza y Análisis de Proyectos',
+        tools: {
+          trustxscanner: {
+            name: 'TrustXScanner',
+            tagline: 'Audita contratos. Anticípate al riesgo.',
+            description: 'Analiza contratos inteligentes y detecta vulnerabilidades o señales de manipulación.',
+          },
+          trustxscore: {
+            name: 'TrustXScore',
+            tagline: 'Mide la fiabilidad, no la fama.',
+            description: 'Asigna una puntuación objetiva basada en liquidez, comportamiento histórico y reputación del creador.',
+          },
+          trustxdex: {
+            name: 'TrustXDex',
+            tagline: 'Transparencia de mercado en tiempo real.',
+            description: 'Agregador de pares y fuente de datos para visualizar precios, volumen y comportamiento del mercado.',
+          },
+        }
+      },
+      
+      // Categoría 2: Reputación y responsabilidad de los creadores
+      creatorReputation: {
+        title: 'Reputación y Responsabilidad de los Creadores',
+        tools: {
+          trustxhub: {
+            name: 'TrustXHub',
+            tagline: 'El historial on-chain habla por ti.',
+            description: 'Analiza la actividad y reputación de los creadores mediante sus wallets y proyectos previos.',
+          },
+          trustxbadge: {
+            name: 'TrustXBadge',
+            tagline: 'La confianza se gana, se verifica y se muestra.',
+            description: 'Otorga acreditaciones verificadas (NFTs no transferibles) que certifican prácticas responsables.',
+          },
+        }
+      },
+      
+      // Categoría 3: Protección, educación y fortalecimiento comunitario
+      communityProtection: {
+        title: 'Protección, Educación y Fortalecimiento Comunitario',
+        tools: {
+          trustxshield: {
+            name: 'TrustXShield',
+            tagline: 'Protección, formación y apoyo comunitario.',
+            description: 'Protocolo descentralizado que financia educación y becas en seguridad Web3.',
+          },
+          trustxrevive: {
+            name: 'TrustXRevive',
+            tagline: 'Segundas oportunidades para proyectos legítimos.',
+            description: 'Iniciativa comunitaria para recuperar y reactivar proyectos abandonados o estafados.',
+          },
+          trustxacademy: {
+            name: 'TrustXAcademy',
+            tagline: 'Aprende Web3. Construye confianza.',
+            description: 'Espacio de formación técnica en blockchain y seguridad.',
+          },
+          trustxinfluence: {
+            name: 'TrustXInfluence',
+            tagline: 'La influencia real se mide con datos.',
+            description: 'Evalúa el impacto real de los influencers mediante métricas verificables.',
+          },
+        }
       }
     },
     
@@ -288,33 +328,73 @@ export const translations = {
     
     // Ecosystem Page
     ecosystem: {
-      title: 'The Web3TrustX Ecosystem',
-      subtitle: 'Integrated solutions for a safer Web3',
-      modules: {
-        trusthubx: {
-          title: 'TrustHubX',
-          description: 'Central hub of verified information about blockchain projects. Complete database with metrics, audits, and risk analysis.',
-        },
-        trustscanner: {
-          title: 'TrustScanner',
-          description: 'Technical analysis tool for smart contracts. Automated detection of vulnerabilities and suspicious patterns.',
-        },
-        trustscore: {
-          title: 'TrustScore',
-          description: 'Multi-factor scoring system for projects. Objective rating based on transparency, team, tokenomics, and audits.',
-        },
-        trustshield: {
-          title: 'TrustShield',
-          description: 'Real-time protection against scams and phishing. Instant alerts and verification of URLs and contracts.',
-        },
-        trustacademy: {
-          title: 'TrustAcademy',
-          description: 'Educational platform with courses, webinars, and certifications. Continuous training for users and developers.',
-        },
-        trustdao: {
-          title: 'TrustDAO',
-          description: 'Decentralized governance of the ecosystem. $WTRUSTX holders decide the future of the platform.',
-        },
+      title: 'Explore the Web3TrustX Ecosystem',
+      subtitle: 'Modular tools designed to build trust across Web3',
+      
+      // Category 1: Trust and Project Analysis
+      trustAnalysis: {
+        title: 'Trust and Project Analysis',
+        tools: {
+          trustxscanner: {
+            name: 'TrustXScanner',
+            tagline: 'Audit contracts. Anticipate risk.',
+            description: 'Analyzes smart contracts and detects vulnerabilities or manipulation signals.',
+          },
+          trustxscore: {
+            name: 'TrustXScore',
+            tagline: 'Measure reliability, not fame.',
+            description: 'Assigns an objective score based on liquidity, historical behavior, and creator reputation.',
+          },
+          trustxdex: {
+            name: 'TrustXDex',
+            tagline: 'Real-time market transparency.',
+            description: 'Pair aggregator and data source to visualize prices, volume, and market behavior.',
+          },
+        }
+      },
+      
+      // Category 2: Creator Reputation and Accountability
+      creatorReputation: {
+        title: 'Creator Reputation and Accountability',
+        tools: {
+          trustxhub: {
+            name: 'TrustXHub',
+            tagline: 'On-chain history speaks for you.',
+            description: 'Analyzes creator activity and reputation through their wallets and previous projects.',
+          },
+          trustxbadge: {
+            name: 'TrustXBadge',
+            tagline: 'Trust is earned, verified, and displayed.',
+            description: 'Grants verified credentials (non-transferable NFTs) certifying responsible practices.',
+          },
+        }
+      },
+      
+      // Category 3: Protection, Education, and Community Empowerment
+      communityProtection: {
+        title: 'Protection, Education, and Community Empowerment',
+        tools: {
+          trustxshield: {
+            name: 'TrustXShield',
+            tagline: 'Protection, training, and community support.',
+            description: 'Decentralized protocol funding education and scholarships in Web3 security.',
+          },
+          trustxrevive: {
+            name: 'TrustXRevive',
+            tagline: 'Second chances for legitimate projects.',
+            description: 'Community initiative to recover and revive abandoned or scammed projects.',
+          },
+          trustxacademy: {
+            name: 'TrustXAcademy',
+            tagline: 'Learn Web3. Build trust.',
+            description: 'Technical training space in blockchain and security.',
+          },
+          trustxinfluence: {
+            name: 'TrustXInfluence',
+            tagline: 'Real influence is measured with data.',
+            description: 'Evaluates the real impact of influencers through verifiable metrics.',
+          },
+        }
       }
     },
     

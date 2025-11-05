@@ -7,42 +7,60 @@ import { motion } from 'framer-motion';
 export default function Ecosystem() {
   const { t } = useLanguage();
 
-  const modules = [
+  // Categoría 1: Confianza y análisis de proyectos
+  const trustAnalysisTools = [
     {
-      name: 'TrustHubX',
-      description: t.ecosystem.modules.trusthubx.description,
-      icon: '🌐',
+      ...t.ecosystem.trustAnalysis.tools.trustxscanner,
+      icon: '🔍',
       color: 'from-primary to-accent-blue',
     },
     {
-      name: 'TrustScanner',
-      description: t.ecosystem.modules.trustscanner.description,
-      icon: '🔍',
+      ...t.ecosystem.trustAnalysis.tools.trustxscore,
+      icon: '⭐',
       color: 'from-accent-blue to-accent-purple',
     },
     {
-      name: 'TrustScore',
-      description: t.ecosystem.modules.trustscore.description,
-      icon: '⭐',
+      ...t.ecosystem.trustAnalysis.tools.trustxdex,
+      icon: '📊',
       color: 'from-accent-purple to-primary',
     },
+  ];
+
+  // Categoría 2: Reputación y responsabilidad de los creadores
+  const creatorReputationTools = [
     {
-      name: 'TrustShield',
-      description: t.ecosystem.modules.trustshield.description,
-      icon: '🛡️',
+      ...t.ecosystem.creatorReputation.tools.trustxhub,
+      icon: '🌐',
       color: 'from-primary to-primary-light',
     },
     {
-      name: 'TrustAcademy',
-      description: t.ecosystem.modules.trustacademy.description,
-      icon: '📚',
+      ...t.ecosystem.creatorReputation.tools.trustxbadge,
+      icon: '🏆',
       color: 'from-accent-blue to-primary',
     },
+  ];
+
+  // Categoría 3: Protección, educación y fortalecimiento comunitario
+  const communityProtectionTools = [
     {
-      name: 'TrustDAO',
-      description: t.ecosystem.modules.trustdao.description,
-      icon: '🗳️',
+      ...t.ecosystem.communityProtection.tools.trustxshield,
+      icon: '🛡️',
+      color: 'from-primary to-accent-blue',
+    },
+    {
+      ...t.ecosystem.communityProtection.tools.trustxrevive,
+      icon: '♻️',
       color: 'from-accent-purple to-accent-blue',
+    },
+    {
+      ...t.ecosystem.communityProtection.tools.trustxacademy,
+      icon: '📚',
+      color: 'from-accent-blue to-primary-light',
+    },
+    {
+      ...t.ecosystem.communityProtection.tools.trustxinfluence,
+      icon: '�',
+      color: 'from-primary-light to-accent-purple',
     },
   ];
 
@@ -55,40 +73,111 @@ export default function Ecosystem() {
 
       <div className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
-          <motion.h1
+          {/* Header Section */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="section-title text-center mb-6"
+            className="text-center mb-16"
           >
-            {t.ecosystem.title}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-xl text-gray-300 text-center mb-16 max-w-3xl mx-auto"
-          >
-            {t.ecosystem.subtitle}
-          </motion.p>
+            <h1 className="section-title mb-6">
+              {t.ecosystem.title}
+            </h1>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              {t.ecosystem.subtitle}
+            </p>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {modules.map((module, index) => (
-              <motion.div
-                key={module.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="card-cyber group"
-              >
-                <div className={`w-16 h-16 bg-gradient-to-br ${module.color} rounded-xl flex items-center justify-center mb-6 text-4xl transform group-hover:scale-110 transition-transform duration-300`}>
-                  {module.icon}
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">{module.name}</h3>
-                <p className="text-gray-400 leading-relaxed">{module.description}</p>
-              </motion.div>
-            ))}
-          </div>
+          {/* Categoría 1: Confianza y análisis de proyectos */}
+          <motion.section
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-20"
+          >
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">
+              {t.ecosystem.trustAnalysis.title}
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {trustAnalysisTools.map((tool, index) => (
+                <motion.div
+                  key={tool.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="card-cyber group"
+                >
+                  <div className={`w-16 h-16 bg-gradient-to-br ${tool.color} rounded-xl flex items-center justify-center mb-6 text-4xl transform group-hover:scale-110 transition-transform duration-300`}>
+                    {tool.icon}
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2">{tool.name}</h3>
+                  <p className="text-sm text-primary font-semibold mb-3">{tool.tagline}</p>
+                  <p className="text-gray-400 leading-relaxed">{tool.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
+
+          {/* Categoría 2: Reputación y responsabilidad de los creadores */}
+          <motion.section
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-20"
+          >
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">
+              {t.ecosystem.creatorReputation.title}
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {creatorReputationTools.map((tool, index) => (
+                <motion.div
+                  key={tool.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="card-cyber group"
+                >
+                  <div className={`w-16 h-16 bg-gradient-to-br ${tool.color} rounded-xl flex items-center justify-center mb-6 text-4xl transform group-hover:scale-110 transition-transform duration-300`}>
+                    {tool.icon}
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2">{tool.name}</h3>
+                  <p className="text-sm text-primary font-semibold mb-3">{tool.tagline}</p>
+                  <p className="text-gray-400 leading-relaxed">{tool.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
+
+          {/* Categoría 3: Protección, educación y fortalecimiento comunitario */}
+          <motion.section
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">
+              {t.ecosystem.communityProtection.title}
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {communityProtectionTools.map((tool, index) => (
+                <motion.div
+                  key={tool.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="card-cyber group"
+                >
+                  <div className={`w-16 h-16 bg-gradient-to-br ${tool.color} rounded-xl flex items-center justify-center mb-6 text-4xl transform group-hover:scale-110 transition-transform duration-300`}>
+                    {tool.icon}
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2">{tool.name}</h3>
+                  <p className="text-sm text-primary font-semibold mb-3">{tool.tagline}</p>
+                  <p className="text-gray-400 leading-relaxed">{tool.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
         </div>
       </div>
     </>
