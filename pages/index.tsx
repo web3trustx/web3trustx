@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useLanguage } from '../lib/LanguageContext';
 import { motion } from 'framer-motion';
+import TopFiveWidget from '../components/TopFiveWidget';
 
 export default function Home() {
   const { t } = useLanguage();
@@ -103,7 +104,7 @@ export default function Home() {
             {t.home.features.title}
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
@@ -120,6 +121,11 @@ export default function Home() {
                 <p className="text-gray-400">{feature.description}</p>
               </motion.div>
             ))}
+          </div>
+
+          {/* Top 5 Leaderboard Widget */}
+          <div className="max-w-2xl mx-auto mt-16">
+            <TopFiveWidget />
           </div>
         </div>
       </section>

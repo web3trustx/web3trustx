@@ -16,6 +16,7 @@ export default function Header() {
     { href: '/tokenomics', label: t.nav.tokenomics },
     { href: '/roadmap', label: t.nav.roadmap },
     { href: '/whitepaper', label: t.nav.whitepaper },
+    { href: '/leaderboard', label: t.nav.leaderboard },
     { href: '/contact', label: t.nav.contact },
   ];
 

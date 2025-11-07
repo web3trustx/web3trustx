@@ -95,22 +95,22 @@ export default function Whitepaper() {
             viewport={{ once: true }}
             className="mt-16 glass-effect rounded-2xl p-8 border-2 border-primary/30 text-center"
           >
-            <h3 className="text-2xl font-bold text-white mb-4">Documentación Completa</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">{t.whitepaper.fullDocumentation.title}</h3>
             <p className="text-gray-300 mb-6">
-              El whitepaper completo incluirá detalles técnicos sobre tokenomics, arquitectura del sistema, modelos de gobernanza y roadmap detallado.
+              {t.whitepaper.fullDocumentation.description}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <div className="px-6 py-3 bg-white/5 rounded-lg">
                 <div className="text-primary font-bold text-2xl">6</div>
-                <div className="text-gray-400 text-sm">Módulos</div>
+                <div className="text-gray-400 text-sm">{t.whitepaper.fullDocumentation.modules}</div>
               </div>
               <div className="px-6 py-3 bg-white/5 rounded-lg">
                 <div className="text-primary font-bold text-2xl">7</div>
-                <div className="text-gray-400 text-sm">Fases</div>
+                <div className="text-gray-400 text-sm">{t.whitepaper.fullDocumentation.phases}</div>
               </div>
               <div className="px-6 py-3 bg-white/5 rounded-lg">
-                <div className="text-primary font-bold text-2xl">∞</div>
-                <div className="text-gray-400 text-sm">Posibilidades</div>
+                <div className="text-primary font-bold text-2xl">5+</div>
+                <div className="text-gray-400 text-sm">{t.whitepaper.fullDocumentation.chains}</div>
               </div>
             </div>
           </motion.div>

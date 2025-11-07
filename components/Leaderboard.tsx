@@ -1,0 +1,299 @@
+'use client';
+
+import { useState, useRef, useEffect } from 'react';
+import { useLanguage } from '../lib/LanguageContext';
+import { useLeaderboardApi, useSearchUser } from '../lib/useLeaderboardApi';
+import { motion, AnimatePresence } from 'framer-motion';
+
+export default function Leaderboard() {
+  const { t } = useLanguage();
+  const [activeTab, setActiveTab] = useState<'participant' | 'influencer'>('participant');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchId, setSearchId] = useState('');
+  const [highlightedUserId, setHighlightedUserId] = useState<string | null>(null);
+  const tableRef = useRef<HTMLDivElement>(null);
+  const highlightedRowRef = useRef<HTMLTableRowElement>(null);
+
+  const { data, loading, error } = useLeaderboardApi(activeTab, currentPage, 20);
+  const { data: searchData, loading: searchLoading, error: searchError, searchUser } = useSearchUser();
+
+  const handleTabChange = (tab: 'participant' | 'influencer') => {
+    setActiveTab(tab);
+    setCurrentPage(1);
+    setHighlightedUserId(null);
+  };
+
+  const handleSearch = async () => {
+    if (!searchId.trim()) return;
+    
+    await searchUser(searchId, activeTab);
+    
+    if (searchData?.match) {
+      // Calcular en qué página está el usuario
+      const userRank = searchData.match.rank;
+      const targetPage = Math.ceil(userRank / 20);
+      setCurrentPage(targetPage);
+      setHighlightedUserId(searchData.match.userId);
+    }
+  };
+
+  // Scroll automático a la fila resaltada cuando se encuentra
+  useEffect(() => {
+    if (highlightedUserId && highlightedRowRef.current) {
+      setTimeout(() => {
+        highlightedRowRef.current?.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'center' 
+        });
+      }, 300);
+    }
+  }, [highlightedUserId, currentPage]);
+
+  const handlePageChange = (newPage: number) => {
+    if (data && newPage >= 1 && newPage <= data.pages) {
+      setCurrentPage(newPage);
+      setHighlightedUserId(null);
+      
+      // Scroll al top de la tabla al cambiar de página
+      if (tableRef.current) {
+        tableRef.current.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+      }
+    }
+  };
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleString('es-ES', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+  };
+
+  return (
+    <div className="min-h-screen py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-12"
+        >
+          <h1 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">
+            Airdrop Ranking
+          </h1>
+          <p className="text-gray-400 text-lg">
+            {t.leaderboard.subtitle}
+          </p>
+        </motion.div>
+
+        {/* Tabs y Buscador */}
+        <div className="mb-8">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+            {/* Tabs */}
+            <div className="flex justify-center md:justify-start gap-2">
+              <button
+                onClick={() => handleTabChange('participant')}
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+                  activeTab === 'participant'
+                    ? 'bg-primary text-black shadow-lg shadow-primary/30'
+                    : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                }`}
+              >
+                {t.leaderboard.tabs.participants}
+              </button>
+              <button
+                onClick={() => handleTabChange('influencer')}
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+                  activeTab === 'influencer'
+                    ? 'bg-primary text-black shadow-lg shadow-primary/30'
+                    : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                }`}
+              >
+                {t.leaderboard.tabs.influencers}
+              </button>
+            </div>
+
+            {/* Buscador */}
+            <div className="flex gap-2">
+              <div className="relative">
+                <input
+                  type="text"
+                  value={searchId}
+                  onChange={(e) => setSearchId(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+                  placeholder={t.leaderboard.search.placeholder}
+                  title="Enter a Telegram user ID"
+                  className="px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 transition-colors w-full md:w-64"
+                />
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 pointer-events-none">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+              </div>
+              <button
+                onClick={handleSearch}
+                disabled={searchLoading}
+                className="px-6 py-3 bg-primary hover:bg-primary/90 text-black font-medium rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {searchLoading ? t.leaderboard.search.searching : t.leaderboard.search.button}
+              </button>
+            </div>
+          </div>
+
+          {/* Mensaje de error de búsqueda */}
+          {searchError && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-3 rounded-lg text-center"
+            >
+              {searchError}
+            </motion.div>
+          )}
+
+          {/* Updated At */}
+          {data?.updatedAt && (
+            <div className="text-sm text-gray-500">
+              {t.leaderboard.updated}: {formatDate(data.updatedAt)}
+            </div>
+          )}
+        </div>
+
+        {/* Loading State */}
+        {loading && (
+          <div className="flex justify-center items-center py-20">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+          </div>
+        )}
+
+        {/* Error State */}
+        {error && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="bg-red-500/10 border border-red-500/30 text-red-400 px-6 py-4 rounded-lg text-center"
+          >
+            {t.leaderboard.error}: {error}
+          </motion.div>
+        )}
+
+        {/* Tabla */}
+        {!loading && !error && data && (
+          <motion.div
+            ref={tableRef}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="glass-effect rounded-xl overflow-hidden border border-white/10"
+          >
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-white/5 border-b border-white/10">
+                  <tr>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">
+                      {t.leaderboard.table.rank}
+                    </th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">
+                      {t.leaderboard.table.telegramId}
+                    </th>
+                    <th className="px-6 py-4 text-right text-sm font-semibold text-gray-300">
+                      {t.leaderboard.table.points}
+                    </th>
+                    <th className="px-6 py-4 text-right text-sm font-semibold text-gray-300">
+                      {t.leaderboard.table.referrals}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <AnimatePresence>
+                    {data.data.map((entry, index) => (
+                      <motion.tr
+                        key={`${entry.userId}-${index}`}
+                        ref={highlightedUserId === entry.userId ? highlightedRowRef : null}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05 }}
+                        className={`border-b border-white/5 hover:bg-white/5 transition-colors ${
+                          highlightedUserId === entry.userId
+                            ? 'bg-yellow-500/20 hover:bg-yellow-500/25'
+                            : ''
+                        }`}
+                      >
+                        {/* Rank + medal */}
+                        <td className="px-6 py-4 w-28">
+                          <div className="flex items-center gap-2">
+                            <span className="w-6 text-right tabular-nums text-white font-semibold">{entry.rank}</span>
+                            {entry.rank === 1 ? '🥇' : entry.rank === 2 ? '🥈' : entry.rank === 3 ? '🥉' : null}
+                          </div>
+                        </td>
+
+                        {/* Telegram ID solo el número */}
+                        <td className="px-6 py-4">
+                          <div className="font-medium text-gray-300 font-mono">{entry.userId ?? ''}</div>
+                        </td>
+
+                        {/* Total points + desglose */}
+                        <td className="px-6 py-4 text-right">
+                          <div className="text-white font-semibold">
+                            {Number(entry.totalPoints ?? 0).toLocaleString()}
+                          </div>
+                          <div className="text-xs text-gray-400">
+                            {Number(entry.selfPoints ?? 0).toLocaleString()} + {Number(entry.referralPoints ?? 0).toLocaleString()}
+                          </div>
+                        </td>
+
+                        {/* Referrals */}
+                        <td className="px-6 py-4 text-right text-gray-300">
+                          {Number(entry.referralsCount ?? 0).toLocaleString()}
+                        </td>
+                      </motion.tr>
+                    ))}
+                  </AnimatePresence>
+                </tbody>
+              </table>
+            </div>
+
+            {/* Paginación */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-6 py-4 bg-white/5 border-t border-white/10">
+              <div className="text-sm text-gray-400">
+                {t.leaderboard.pagination.pageInfo
+                  .replace('{{page}}', data.page.toString())
+                  .replace('{{pages}}', data.pages.toString())
+                  .replace('{{total}}', data.total.toString())}
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className="px-4 py-2 bg-white/5 hover:bg-white/10 text-white rounded-lg transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  {t.leaderboard.pagination.previous}
+                </button>
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === data.pages}
+                  className="px-4 py-2 bg-white/5 hover:bg-white/10 text-white rounded-lg transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  {t.leaderboard.pagination.next}
+                </button>
+              </div>
+            </div>
+
+            {/* Disclaimer */}
+            <div className="px-6 py-4 bg-yellow-500/10 border-t border-yellow-500/20">
+              <p className="text-sm text-yellow-200/90 text-center">
+                ⚠️ {t.leaderboard.disclaimer}
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </div>
+    </div>
+  );
+}

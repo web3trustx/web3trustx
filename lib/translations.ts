@@ -9,6 +9,7 @@ export const translations = {
       roadmap: 'Roadmap',
       whitepaper: 'Whitepaper',
       contact: 'Contacto',
+      leaderboard: 'Airdrop Ranking',
     },
     
     // Home Page
@@ -230,6 +231,13 @@ export const translations = {
         },
       },
       comingSoon: 'El whitepaper completo estará disponible próximamente',
+      fullDocumentation: {
+        title: 'Documentación Completa',
+        description: 'El whitepaper completo incluirá detalles técnicos sobre tokenomics, arquitectura del sistema, modelos de gobernanza y roadmap detallado.',
+        modules: 'Módulos',
+        phases: 'Fases',
+        chains: 'Blockchains',
+      },
     },
     
     // Contact Page
@@ -252,6 +260,41 @@ export const translations = {
         discord: 'Discord',
         email: 'Email',
       }
+    },
+
+    // Leaderboard Page
+    leaderboard: {
+      title: 'Airdrop Leaderboard',
+      subtitle: 'Ranking de participantes e influencers del airdrop',
+      tabs: {
+        participants: 'Participantes',
+        influencers: 'Influencers',
+      },
+      search: {
+        placeholder: 'Buscar por Telegram ID...',
+        button: 'Buscar',
+        notFound: 'Usuario no encontrado',
+        searching: 'Buscando...',
+      },
+      table: {
+        rank: '#',
+        telegramId: 'Telegram ID',
+        points: 'Puntos',
+        referrals: 'Referidos',
+      },
+      pagination: {
+        previous: 'Anterior',
+        next: 'Siguiente',
+        pageInfo: 'Página {{page}} / {{pages}} • {{total}} total',
+      },
+      disclaimer: 'Los datos mostrados son provisionales. Las puntuaciones finales se publicarán el 1 de marzo de 2026 y estarán sujetas al cumplimiento de las condiciones exigidas en esa fecha.',
+      updated: 'Actualizado',
+      loading: 'Cargando...',
+      error: 'Error al cargar datos',
+      topFive: {
+        title: 'Top 5 Participantes',
+        viewFull: 'Ver ranking completo',
+      },
     },
     
     // Footer
@@ -276,6 +319,7 @@ export const translations = {
       roadmap: 'Roadmap',
       whitepaper: 'Whitepaper',
       contact: 'Contact',
+      leaderboard: 'Airdrop Ranking',
     },
     
     // Home Page
@@ -497,6 +541,13 @@ export const translations = {
         },
       },
       comingSoon: 'The complete whitepaper will be available soon',
+      fullDocumentation: {
+        title: 'Complete Documentation',
+        description: 'The complete whitepaper will include technical details on tokenomics, system architecture, governance models, and detailed roadmap.',
+        modules: 'Modules',
+        phases: 'Phases',
+        chains: 'Blockchains',
+      },
     },
     
     // Contact Page
@@ -519,6 +570,41 @@ export const translations = {
         discord: 'Discord',
         email: 'Email',
       }
+    },
+
+    // Leaderboard Page
+    leaderboard: {
+      title: 'Airdrop Leaderboard',
+      subtitle: 'Participant and influencer ranking for the airdrop',
+      tabs: {
+        participants: 'Participants',
+        influencers: 'Influencers',
+      },
+      search: {
+        placeholder: 'Search by Telegram ID...',
+        button: 'Search',
+        notFound: 'User not found',
+        searching: 'Searching...',
+      },
+      table: {
+        rank: '#',
+        telegramId: 'Telegram ID',
+        points: 'Points',
+        referrals: 'Referrals',
+      },
+      pagination: {
+        previous: 'Previous',
+        next: 'Next',
+        pageInfo: 'Page {{page}} / {{pages}} • {{total}} total',
+      },
+      disclaimer: 'The data shown is provisional. Final scores will be published on March 1, 2026 and will be subject to compliance with the conditions required on that date.',
+      updated: 'Updated',
+      loading: 'Loading...',
+      error: 'Error loading data',
+      topFive: {
+        title: 'Top 5 Participants',
+        viewFull: 'View full ranking',
+      },
     },
     
     // Footer
