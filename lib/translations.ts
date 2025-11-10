@@ -10,6 +10,7 @@ export const translations = {
       whitepaper: 'Whitepaper',
       contact: 'Contacto',
       leaderboard: 'Airdrop Ranking',
+      airdropTerms: 'Condiciones',
     },
     
     // Home Page
@@ -269,6 +270,7 @@ export const translations = {
       tabs: {
         participants: 'Participantes',
         influencers: 'Influencers',
+        terms: 'Condiciones',
       },
       search: {
         placeholder: 'Buscar por Telegram ID...',
@@ -320,6 +322,7 @@ export const translations = {
       whitepaper: 'Whitepaper',
       contact: 'Contact',
       leaderboard: 'Airdrop Ranking',
+      airdropTerms: 'Terms',
     },
     
     // Home Page
@@ -579,6 +582,7 @@ export const translations = {
       tabs: {
         participants: 'Participants',
         influencers: 'Influencers',
+        terms: 'Terms',
       },
       search: {
         placeholder: 'Search by Telegram ID...',

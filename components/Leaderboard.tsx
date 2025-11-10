@@ -4,20 +4,25 @@ import { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../lib/LanguageContext';
 import { useLeaderboardApi, useSearchUser } from '../lib/useLeaderboardApi';
 import { motion, AnimatePresence } from 'framer-motion';
+import AirdropTerms from './AirdropTerms';
 
 export default function Leaderboard() {
   const { t } = useLanguage();
-  const [activeTab, setActiveTab] = useState<'participant' | 'influencer'>('participant');
+  const [activeTab, setActiveTab] = useState<'participant' | 'influencer' | 'terms'>('participant');
   const [currentPage, setCurrentPage] = useState(1);
   const [searchId, setSearchId] = useState('');
   const [highlightedUserId, setHighlightedUserId] = useState<string | null>(null);
   const tableRef = useRef<HTMLDivElement>(null);
   const highlightedRowRef = useRef<HTMLTableRowElement>(null);
 
-  const { data, loading, error } = useLeaderboardApi(activeTab, currentPage, 20);
+  const { data, loading, error } = useLeaderboardApi(
+    activeTab === 'terms' ? 'participant' : activeTab, 
+    currentPage, 
+    20
+  );
   const { data: searchData, loading: searchLoading, error: searchError, searchUser } = useSearchUser();
 
-  const handleTabChange = (tab: 'participant' | 'influencer') => {
+  const handleTabChange = (tab: 'participant' | 'influencer' | 'terms') => {
     setActiveTab(tab);
     setCurrentPage(1);
     setHighlightedUserId(null);
@@ -26,7 +31,7 @@ export default function Leaderboard() {
   const handleSearch = async () => {
     if (!searchId.trim()) return;
     
-    await searchUser(searchId, activeTab);
+    await searchUser(searchId, activeTab === 'terms' ? 'participant' : activeTab);
     
     if (searchData?.match) {
       // Calcular en qué página está el usuario
@@ -99,7 +104,7 @@ export default function Leaderboard() {
             <div className="flex justify-center md:justify-start gap-2">
               <button
                 onClick={() => handleTabChange('participant')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 min-w-[140px] ${
                   activeTab === 'participant'
                     ? 'bg-primary text-black shadow-lg shadow-primary/30'
                     : 'bg-white/5 text-gray-400 hover:bg-white/10'
@@ -109,7 +114,7 @@ export default function Leaderboard() {
               </button>
               <button
                 onClick={() => handleTabChange('influencer')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 min-w-[140px] ${
                   activeTab === 'influencer'
                     ? 'bg-primary text-black shadow-lg shadow-primary/30'
                     : 'bg-white/5 text-gray-400 hover:bg-white/10'
@@ -117,34 +122,46 @@ export default function Leaderboard() {
               >
                 {t.leaderboard.tabs.influencers}
               </button>
-            </div>
-
-            {/* Buscador */}
-            <div className="flex gap-2">
-              <div className="relative">
-                <input
-                  type="text"
-                  value={searchId}
-                  onChange={(e) => setSearchId(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-                  placeholder={t.leaderboard.search.placeholder}
-                  title="Enter a Telegram user ID"
-                  className="px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 transition-colors w-full md:w-64"
-                />
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 pointer-events-none">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                </div>
-              </div>
               <button
-                onClick={handleSearch}
-                disabled={searchLoading}
-                className="px-6 py-3 bg-primary hover:bg-primary/90 text-black font-medium rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                onClick={() => handleTabChange('terms')}
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 min-w-[140px] ${
+                  activeTab === 'terms'
+                    ? 'bg-primary text-black shadow-lg shadow-primary/30'
+                    : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                }`}
               >
-                {searchLoading ? t.leaderboard.search.searching : t.leaderboard.search.button}
+                {t.leaderboard.tabs.terms}
               </button>
             </div>
+
+            {/* Buscador - Solo mostrar si NO es tab de terms */}
+            {activeTab !== 'terms' && (
+              <div className="flex gap-2">
+                <div className="relative">
+                  <input
+                    type="text"
+                    value={searchId}
+                    onChange={(e) => setSearchId(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+                    placeholder={t.leaderboard.search.placeholder}
+                    title="Enter a Telegram user ID"
+                    className="px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 transition-colors w-full md:w-64"
+                  />
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 pointer-events-none">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                  </div>
+                </div>
+                <button
+                  onClick={handleSearch}
+                  disabled={searchLoading}
+                  className="px-6 py-3 bg-primary hover:bg-primary/90 text-black font-medium rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {searchLoading ? t.leaderboard.search.searching : t.leaderboard.search.button}
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Mensaje de error de búsqueda */}
@@ -159,39 +176,45 @@ export default function Leaderboard() {
           )}
 
           {/* Updated At */}
-          {data?.updatedAt && (
+          {data?.updatedAt && activeTab !== 'terms' && (
             <div className="text-sm text-gray-500">
               {t.leaderboard.updated}: {formatDate(data.updatedAt)}
             </div>
           )}
         </div>
 
-        {/* Loading State */}
-        {loading && (
-          <div className="flex justify-center items-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-          </div>
-        )}
+        {/* Mostrar Condiciones si el tab es 'terms' */}
+        {activeTab === 'terms' && <AirdropTerms />}
 
-        {/* Error State */}
-        {error && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="bg-red-500/10 border border-red-500/30 text-red-400 px-6 py-4 rounded-lg text-center"
-          >
-            {t.leaderboard.error}: {error}
-          </motion.div>
-        )}
+        {/* Mostrar Ranking si el tab NO es 'terms' */}
+        {activeTab !== 'terms' && (
+          <>
+            {/* Loading State */}
+            {loading && (
+              <div className="flex justify-center items-center py-20">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+              </div>
+            )}
 
-        {/* Tabla */}
-        {!loading && !error && data && (
-          <motion.div
-            ref={tableRef}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="glass-effect rounded-xl overflow-hidden border border-white/10"
-          >
+            {/* Error State */}
+            {error && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="bg-red-500/10 border border-red-500/30 text-red-400 px-6 py-4 rounded-lg text-center"
+              >
+                {t.leaderboard.error}: {error}
+              </motion.div>
+            )}
+
+            {/* Tabla */}
+            {!loading && !error && data && (
+              <motion.div
+                ref={tableRef}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="glass-effect rounded-xl overflow-hidden border border-white/10"
+              >
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-white/5 border-b border-white/10">
@@ -291,7 +314,9 @@ export default function Leaderboard() {
                 ⚠️ {t.leaderboard.disclaimer}
               </p>
             </div>
-          </motion.div>
+              </motion.div>
+            )}
+          </>
         )}
       </div>
     </div>

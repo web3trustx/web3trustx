@@ -17,6 +17,7 @@ export default function Header() {
     { href: '/roadmap', label: t.nav.roadmap },
     { href: '/whitepaper', label: t.nav.whitepaper },
     { href: '/leaderboard', label: t.nav.leaderboard },
+    { href: '/leaderboard#airdrop-terms', label: t.nav.airdropTerms },
     { href: '/contact', label: t.nav.contact },
   ];
 
