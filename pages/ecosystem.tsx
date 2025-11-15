@@ -98,23 +98,54 @@ export default function Ecosystem() {
               {t.ecosystem.trustAnalysis.title}
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {trustAnalysisTools.map((tool, index) => (
-                <motion.div
-                  key={tool.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="card-cyber group"
-                >
-                  <div className={`w-16 h-16 bg-gradient-to-br ${tool.color} rounded-xl flex items-center justify-center mb-6 text-4xl transform group-hover:scale-110 transition-transform duration-300`}>
-                    {tool.icon}
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">{tool.name}</h3>
-                  <p className="text-sm text-primary font-semibold mb-3">{tool.tagline}</p>
-                  <p className="text-gray-400 leading-relaxed">{tool.description}</p>
-                </motion.div>
-              ))}
+              {trustAnalysisTools.map((tool, index) => {
+                const isTrustXScanner = tool.name === 'TrustXScanner';
+                const CardWrapper = isTrustXScanner ? 'a' : 'div';
+                const cardProps = isTrustXScanner 
+                  ? { 
+                      href: 'https://scanner.web3trustx.com',
+                      target: '_blank',
+                      rel: 'noopener noreferrer'
+                    } 
+                  : {};
+
+                return (
+                  <motion.div
+                    key={tool.name}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <CardWrapper
+                      {...cardProps}
+                      className={`card-cyber group block h-full ${isTrustXScanner ? 'cursor-pointer hover:shadow-xl hover:shadow-primary/20' : ''}`}
+                    >
+                      <div className={`w-16 h-16 bg-gradient-to-br ${tool.color} rounded-xl flex items-center justify-center mb-6 text-4xl transform group-hover:scale-110 transition-transform duration-300`}>
+                        {tool.icon}
+                      </div>
+                      <h3 className="text-2xl font-bold text-white mb-2">
+                        {tool.name}
+                        {isTrustXScanner && (
+                          <span className="ml-2 inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-primary text-black">
+                            LIVE
+                          </span>
+                        )}
+                      </h3>
+                      <p className="text-sm text-primary font-semibold mb-3">{tool.tagline}</p>
+                      <p className="text-gray-400 leading-relaxed">{tool.description}</p>
+                      {isTrustXScanner && (
+                        <div className="mt-4 flex items-center text-primary text-sm font-semibold">
+                          Open App
+                          <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                          </svg>
+                        </div>
+                      )}
+                    </CardWrapper>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.section>
 

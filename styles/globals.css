@@ -53,4 +53,17 @@
   .glow-primary {
     text-shadow: 0 0 20px rgba(0, 181, 173, 0.5);
   }
+
+  .pulse-strong {
+    animation: pulse-strong 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-strong {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
 }

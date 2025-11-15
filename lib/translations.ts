@@ -12,6 +12,14 @@ export const translations = {
       leaderboard: 'Airdrop Ranking',
       airdropTerms: 'Condiciones',
     },
+
+    // News Ribbon
+    newsRibbon: {
+      badge: 'NUEVO',
+      title: 'TrustXScanner Beta Publicado 🚀',
+      description: 'Nuestro primer motor de análisis ya está en vivo. Escanea tokens de Solana y detecta señales de riesgo tempranas.',
+      button: 'Abrir App',
+    },
     
     // Home Page
     home: {
@@ -323,6 +331,14 @@ export const translations = {
       contact: 'Contact',
       leaderboard: 'Airdrop Ranking',
       airdropTerms: 'Terms',
+    },
+
+    // News Ribbon
+    newsRibbon: {
+      badge: 'NEW',
+      title: 'TrustXScanner Beta Released 🚀',
+      description: 'Our first analysis engine is now live. Scan Solana tokens and detect early risk signals.',
+      button: 'Open App',
     },
     
     // Home Page
