@@ -8,37 +8,37 @@ export default function Tokenomics() {
   const { t } = useLanguage();
 
   const distribution = [
-    { name: 'Comunidad & Ecosistema', percentage: 63, amount: '630.000.000', color: '#00B5AD' },
-    { name: 'Equipo & Advisors', percentage: 12.5, amount: '125.000.000', color: '#4A90E2' },
-    { name: 'Reservas Estratégicas', percentage: 7.5, amount: '75.000.000', color: '#9B59B6' },
-    { name: 'Marketing', percentage: 5, amount: '50.000.000', color: '#E74C3C' },
-    { name: 'Preventa Pública', percentage: 4, amount: '40.000.000', color: '#F39C12' },
-    { name: 'Liquidez (WTX-side)', percentage: 3, amount: '30.000.000', color: '#1ABC9C' },
-    { name: 'Tesoro Operativo', percentage: 2.5, amount: '25.000.000', color: '#34495E' },
-    { name: 'Seed', percentage: 2.5, amount: '25.000.000', color: '#95A5A6' },
+    { name: 'Community & Ecosystem', percentage: 63, amount: '630,000,000', color: '#00B5AD' },
+    { name: 'Team & Advisors', percentage: 12.5, amount: '125,000,000', color: '#4A90E2' },
+    { name: 'Strategic Reserves', percentage: 7.5, amount: '75,000,000', color: '#9B59B6' },
+    { name: 'Marketing', percentage: 5, amount: '50,000,000', color: '#E74C3C' },
+    { name: 'Public Presale', percentage: 4, amount: '40,000,000', color: '#F39C12' },
+    { name: 'Liquidity (WTX-side)', percentage: 3, amount: '30,000,000', color: '#1ABC9C' },
+    { name: 'Operations Treasury', percentage: 2.5, amount: '25,000,000', color: '#34495E' },
+    { name: 'Seed', percentage: 2.5, amount: '25,000,000', color: '#95A5A6' },
   ];
 
   const utilities = [
     'TrustXScanner (premium)',
-    'TrustXDex (herramientas avanzadas)',
-    'TrustXScore (reputación y auditoría)',
-    'TrustXHub (análisis de desarrolladores)',
-    'TrustXInfluence (recompensas)',
-    'TrustXBadge (credenciales verificadas)',
-    'Bots premium',
-    'Recompensas por actividad',
+    'TrustXDex (advanced tools)',
+    'TrustXScore (reputation & audit)',
+    'TrustXHub (developer analysis)',
+    'TrustXInfluence (rewards)',
+    'TrustXBadge (verified credentials)',
+    'Premium bots',
+    'Activity rewards',
     'Staking / LP Mining',
-    'App móvil',
-    'Expansión multichain',
+    'Mobile app',
+    'Multichain expansion',
   ];
 
   const protections = [
-    'Límites por wallet en preventa',
-    'Límites por transacción en lanzamiento',
-    'LP bloqueada 24 meses',
-    'Equipo sin tokens 2 años',
-    'Sin minting, sin funciones ocultas',
-    'Contratos bloqueados y auditables',
+    'Wallet limits in presale',
+    'Transaction limits at launch',
+    'LP locked 24 months',
+    'Team without tokens for 2 years',
+    'No minting, no hidden functions',
+    'Locked and auditable contracts',
   ];
 
   return (
@@ -57,10 +57,10 @@ export default function Tokenomics() {
             className="text-center mb-16"
           >
             <h1 className="section-title mb-6">
-              Tokenomics Oficiales — WEB3TRUSTX (WTX)
+              Official Tokenomics — WEB3TRUSTX (WTX)
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Supply total: 1.000.000.000 WTX • Red inicial: BNB Chain (BEP-20)
+              Total Supply: 1,000,000,000 WTX • Initial Network: BNB Chain (BEP-20)
             </p>
           </motion.div>
 
@@ -71,17 +71,17 @@ export default function Tokenomics() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">🌐 Datos Generales</h2>
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">🌐 General Data</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { label: 'Supply Total', value: '1.000.000.000 WTX' },
-                { label: 'Red Inicial', value: 'BNB Chain (BEP-20)' },
-                { label: 'Precio de Lanzamiento', value: '0,00085 USD' },
-                { label: 'FDV Inicial', value: '850.000 USD' },
-                { label: 'Liquidez Inicial', value: '≈ 51.000 USD' },
-                { label: 'Liquidez Bloqueada', value: '24 meses' },
-                { label: 'Circulante Inicial', value: '1,85% – 1,90%' },
-                { label: 'Token', value: 'Supply fijo, sin minting' },
+                { label: 'Total Supply', value: '1,000,000,000 WTX' },
+                { label: 'Initial Network', value: 'BNB Chain (BEP-20)' },
+                { label: 'Launch Price', value: '$0.00085 USD' },
+                { label: 'Initial FDV', value: '$850,000 USD' },
+                { label: 'Initial Liquidity', value: '≈ $51,000 USD' },
+                { label: 'Locked Liquidity', value: '24 months' },
+                { label: 'Initial Circulating', value: '1.85% – 1.90%' },
+                { label: 'Token', value: 'Fixed supply, no minting' },
               ].map((item, index) => (
                 <motion.div
                   key={index}
@@ -105,7 +105,7 @@ export default function Tokenomics() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">🟦 Distribución del Supply (100%)</h2>
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">🟦 Supply Distribution (100%)</h2>
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Donut Chart */}
               <div className="relative">
@@ -200,26 +200,26 @@ export default function Tokenomics() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">🟣 Liquidez (LP)</h2>
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">🟣 Liquidity (LP)</h2>
             <div className="card-cyber max-w-4xl mx-auto">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <p className="text-primary font-semibold mb-2">WTX Asignados</p>
-                  <p className="text-2xl font-bold text-white mb-4">30.000.000 WTX (3%)</p>
-                  <p className="text-gray-400 text-sm">Valor inicial: 25.500 USD en WTX</p>
+                  <p className="text-primary font-semibold mb-2">Allocated WTX</p>
+                  <p className="text-2xl font-bold text-white mb-4">30,000,000 WTX (3%)</p>
+                  <p className="text-gray-400 text-sm">Initial value: $25,500 USD in WTX</p>
                 </div>
                 <div>
-                  <p className="text-primary font-semibold mb-2">Liquidez Total</p>
-                  <p className="text-2xl font-bold text-white mb-4">≈ 51.000 USD</p>
-                  <p className="text-gray-400 text-sm">25.500 USD en WTX + 25.500 USD en BNB</p>
+                  <p className="text-primary font-semibold mb-2">Total Liquidity</p>
+                  <p className="text-2xl font-bold text-white mb-4">≈ $51,000 USD</p>
+                  <p className="text-gray-400 text-sm">$25,500 USD in WTX + $25,500 USD in BNB</p>
                 </div>
                 <div>
-                  <p className="text-primary font-semibold mb-2">LP Bloqueada</p>
-                  <p className="text-xl font-bold text-white">24 meses</p>
+                  <p className="text-primary font-semibold mb-2">Locked LP</p>
+                  <p className="text-xl font-bold text-white">24 months</p>
                 </div>
                 <div>
-                  <p className="text-primary font-semibold mb-2">LP-side Accesible</p>
-                  <p className="text-xl font-bold text-white">7–9 millones WTX</p>
+                  <p className="text-primary font-semibold mb-2">Accessible LP-side</p>
+                  <p className="text-xl font-bold text-white">7–9 million WTX</p>
                 </div>
               </div>
             </div>
@@ -232,12 +232,12 @@ export default function Tokenomics() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">🟩 Precios por Fase</h2>
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">🟩 Pricing by Phase</h2>
             <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               {[
-                { phase: 'Seed', price: '0,00066 USD', color: 'from-gray-500 to-gray-600' },
-                { phase: 'Preventa Pública', price: '0,00075 USD', color: 'from-yellow-500 to-orange-500' },
-                { phase: 'Lanzamiento', price: '0,00085 USD', color: 'from-primary to-accent-blue' },
+                { phase: 'Seed', price: '$0.00066 USD', color: 'from-gray-500 to-gray-600' },
+                { phase: 'Public Presale', price: '$0.00075 USD', color: 'from-yellow-500 to-orange-500' },
+                { phase: 'Launch', price: '$0.00085 USD', color: 'from-primary to-accent-blue' },
               ].map((item, index) => (
                 <motion.div
                   key={index}
@@ -264,36 +264,36 @@ export default function Tokenomics() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">🟨 Vesting & Bloqueos</h2>
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">🟨 Vesting & Lock-ups</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 {
-                  title: 'Seed — 2,5%',
-                  details: ['15% TGE', '3 meses cliff', '85% lineal en 9 meses'],
+                  title: 'Seed — 2.5%',
+                  details: ['15% TGE', '3 months cliff', '85% linear in 9 months'],
                 },
                 {
-                  title: 'Preventa Pública — 4%',
-                  details: ['20% TGE', '80% lineal en 4 meses'],
+                  title: 'Public Presale — 4%',
+                  details: ['20% TGE', '80% linear in 4 months'],
                 },
                 {
-                  title: 'Equipo & Advisors — 12,5%',
-                  details: ['24 meses cliff', '72 meses vesting lineal', 'Total: 96 meses'],
+                  title: 'Team & Advisors — 12.5%',
+                  details: ['24 months cliff', '72 months linear vesting', 'Total: 96 months'],
                 },
                 {
-                  title: 'Comunidad & Ecosistema — 63%',
-                  details: ['100% bloqueado', 'Liberación programada', 'Sin liberación automática'],
+                  title: 'Community & Ecosystem — 63%',
+                  details: ['100% locked', 'Programmed release', 'No automatic release'],
                 },
                 {
-                  title: 'Reservas Estratégicas — 7,5%',
-                  details: ['Bloqueo largo plazo'],
+                  title: 'Strategic Reserves — 7.5%',
+                  details: ['Long-term lock'],
                 },
                 {
                   title: 'Marketing — 5%',
-                  details: ['1 mes cliff', 'Vesting 12 meses'],
+                  details: ['1 month cliff', '12 months vesting'],
                 },
                 {
-                  title: 'Tesoro Operativo — 2,5%',
-                  details: ['6 meses cliff', 'Vesting 12 meses'],
+                  title: 'Operations Treasury — 2.5%',
+                  details: ['6 months cliff', '12 months vesting'],
                 },
               ].map((item, index) => (
                 <motion.div
@@ -318,49 +318,49 @@ export default function Tokenomics() {
             </div>
           </motion.section>
 
-          {/* Circulante Inicial */}
+          {/* Initial Circulating Supply */}
           <motion.section
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mb-16"
           >
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">🟥 Circulante Inicial</h2>
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">🟥 Initial Circulating Supply</h2>
             <div className="card-cyber max-w-4xl mx-auto">
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <p className="text-gray-400 mb-2">LP accesible</p>
+                  <p className="text-gray-400 mb-2">Accessible LP</p>
                   <p className="text-2xl font-bold text-white">7–9M WTX</p>
                 </div>
                 <div>
                   <p className="text-gray-400 mb-2">Seed TGE</p>
-                  <p className="text-2xl font-bold text-white">3,75M WTX</p>
+                  <p className="text-2xl font-bold text-white">3.75M WTX</p>
                 </div>
                 <div>
-                  <p className="text-gray-400 mb-2">Preventa TGE</p>
+                  <p className="text-gray-400 mb-2">Presale TGE</p>
                   <p className="text-2xl font-bold text-white">8M WTX</p>
                 </div>
                 <div>
-                  <p className="text-gray-400 mb-2">Airdrop inicial</p>
-                  <p className="text-2xl font-bold text-white">3,53M WTX</p>
+                  <p className="text-gray-400 mb-2">Initial Airdrop</p>
+                  <p className="text-2xl font-bold text-white">3.53M WTX</p>
                 </div>
               </div>
               <div className="border-t border-white/10 pt-6">
-                <p className="text-gray-400 mb-2 text-center">Total Circulante Inicial</p>
-                <p className="text-4xl font-bold text-primary text-center">≈ 18,5–19,3M WTX</p>
-                <p className="text-gray-400 text-center mt-2">(1,85–1,90% del supply total)</p>
+                <p className="text-gray-400 mb-2 text-center">Total Initial Circulating</p>
+                <p className="text-4xl font-bold text-primary text-center">≈ 18.5–19.3M WTX</p>
+                <p className="text-gray-400 text-center mt-2">(1.85–1.90% of total supply)</p>
               </div>
             </div>
           </motion.section>
 
-          {/* Utilidad del Token */}
+          {/* Token Utility */}
           <motion.section
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mb-16"
           >
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">🟩 Utilidad del Token WTX</h2>
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">🟩 WTX Token Utility</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
               {utilities.map((utility, index) => (
                 <motion.div
@@ -378,14 +378,14 @@ export default function Tokenomics() {
             </div>
           </motion.section>
 
-          {/* Protección al Usuario */}
+          {/* User Protection */}
           <motion.section
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mb-16"
           >
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">🟧 Protección al Usuario</h2>
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">🟧 User Protection</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
               {protections.map((protection, index) => (
                 <motion.div
@@ -403,28 +403,28 @@ export default function Tokenomics() {
             </div>
           </motion.section>
 
-          {/* Expansión Multichain */}
+          {/* Multichain Expansion */}
           <motion.section
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">🟦 Expansión Multichain</h2>
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">🟦 Multichain Expansion</h2>
             <div className="card-cyber max-w-4xl mx-auto">
               <div className="grid md:grid-cols-3 gap-6 text-center">
                 <div>
                   <p className="text-4xl mb-3">🚀</p>
-                  <p className="text-primary font-semibold mb-2">Lanzamiento</p>
+                  <p className="text-primary font-semibold mb-2">Launch</p>
                   <p className="text-white font-bold">BNB Chain</p>
                 </div>
                 <div>
                   <p className="text-4xl mb-3">⏭️</p>
-                  <p className="text-primary font-semibold mb-2">Siguiente</p>
+                  <p className="text-primary font-semibold mb-2">Next</p>
                   <p className="text-white font-bold">Solana</p>
                 </div>
                 <div>
                   <p className="text-4xl mb-3">🌐</p>
-                  <p className="text-primary font-semibold mb-2">Futuras Cadenas</p>
+                  <p className="text-primary font-semibold mb-2">Future Chains</p>
                   <p className="text-white font-bold">Base, Polygon, Sui</p>
                 </div>
               </div>
