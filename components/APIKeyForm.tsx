@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { useLanguage } from '../lib/LanguageContext';
 import { motion } from 'framer-motion';
 
@@ -192,13 +193,13 @@ export default function APIKeyForm() {
             />
             <span className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
               {t.trustxdataApi.keyForm.terms}{' '}
-              <a href="/terms" className="text-primary hover:underline">
+              <Link href="/terms" className="text-primary hover:underline">
                 {t.trustxdataApi.keyForm.termsLink}
-              </a>{' '}
+              </Link>{' '}
               {t.trustxdataApi.keyForm.privacy}{' '}
-              <a href="/privacy" className="text-primary hover:underline">
+              <Link href="/privacy" className="text-primary hover:underline">
                 {t.trustxdataApi.keyForm.privacyLink}
-              </a>
+              </Link>
             </span>
           </label>
           {errors.terms && (
@@ -216,9 +217,9 @@ export default function APIKeyForm() {
 
         <p className="text-center text-sm text-gray-400">
           {t.trustxdataApi.keyForm.recoverKey}{' '}
-          <a href="/trustxdata/api#recover" className="text-primary hover:underline">
+          <Link href="/trustxdata/api#recover" className="text-primary hover:underline">
             {t.trustxdataApi.keyForm.recoverKeyLink}
-          </a>
+          </Link>
         </p>
       </form>
     </div>
