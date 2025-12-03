@@ -15,7 +15,7 @@ import {
 import DynamicPieChart from "../components/tokenomics/DynamicPieChart";
 import { TokenomicsCard } from "../components/tokenomics/TokenomicsCard";
 import { TokenomicsDetailModal } from "../components/tokenomics/TokenomicsDetailModal";
-import { HorizontalCalendar } from "../components/tokenomics/HorizontalCalendar";
+import { UnlockCalendar } from "../components/tokenomics/UnlockCalendar";
 import { UnlockTimeline } from "../components/tokenomics/UnlockTimeline";
 
 const glassCard = "rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-2xl";
@@ -107,11 +107,6 @@ export default function TokenomicsPage() {
 
         <div className="relative z-10 px-4 pt-32 pb-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl space-y-20">
-            {/* Horizontal calendar at the top */}
-            <div className="-mx-4 sm:-mx-6 lg:-mx-8">
-              <HorizontalCalendar />
-            </div>
-
             {/* Hero */}
             <section className={`${glassCard} relative overflow-hidden bg-gradient-to-br from-[#040915]/90 to-[#0a1220]/70 p-8`}>
               <div className="flex flex-col gap-10 lg:flex-row">
@@ -130,6 +125,12 @@ export default function TokenomicsPage() {
                       className="rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-black transition hover:bg-white/90"
                     >
                       {t.tokenomics.hero.ctaPrimary}
+                    </a>
+                    <a
+                      href="#calendar"
+                      className="rounded-2xl border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                    >
+                      {t.tokenomics.hero.ctaSecondary}
                     </a>
                   </div>
                 </div>
@@ -263,7 +264,14 @@ export default function TokenomicsPage() {
             </section>
 
             {/* Calendar & timeline */}
-            <section id="calendar" className="grid gap-8 lg:grid-cols-1">
+            <section id="calendar" className="grid gap-8 lg:grid-cols-2">
+              <div>
+                <p className="text-xs uppercase tracking-[0.3em] text-white/40">{t.tokenomics.calendar.title}</p>
+                <p className="text-sm text-white/60">{t.tokenomics.calendar.subtitle}</p>
+                <div className="mt-4">
+                  <UnlockCalendar />
+                </div>
+              </div>
               <div id="timeline">
                 <p className="text-xs uppercase tracking-[0.3em] text-white/40">{t.tokenomics.timeline.title}</p>
                 <p className="text-sm text-white/60">{t.tokenomics.timeline.subtitle}</p>

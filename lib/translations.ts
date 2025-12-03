@@ -145,10 +145,63 @@ export const translations = {
     
     // Tokenomics Page
     tokenomics: {
-      title: 'Tokenomics',
-      placeholder: 'Sección en Desarrollo',
-      message: 'Próximamente se anunciarán los detalles del modelo económico de $WTRUSTX.',
-      comingSoon: 'Muy Pronto',
+      hero: {
+        badge: 'Arquitectura económica',
+        title: 'Tokenomics Web3TrustX (WTX)',
+        subtitle: 'Oferta fija, deflación programada, liquidez blindada',
+        description:
+          'WTX impulsa el ecosistema con ciclos auditables, quemas automáticas y gobernanza transparente durante todo el roadmap.',
+        ctaPrimary: 'Explorar distribución',
+        ctaSecondary: 'Ver calendario',
+      },
+      summary: {
+        title: 'Parámetros principales',
+        subtitle: 'Todos los datos son públicos, on-chain y auditables.',
+      },
+      metrics: {
+        totalSupply: 'Supply total',
+        network: 'Red inicial',
+        price: 'Precio inicial',
+        fdv: 'FDV inicial',
+        liquidity: 'Liquidez inicial',
+        lock: 'Bloqueo de liquidez',
+        circulating: 'Circulante TGE',
+        ticker: 'Ticker',
+      },
+      principles: {
+        title: 'Principios rectores',
+        subtitle: 'Tres pilares sostienen la economía del token.',
+      },
+      allocation: {
+        title: 'Distribución y liberaciones',
+        subtitle: 'Interactúa con el gráfico o las tarjetas para conocer cada bloque.',
+      },
+      initialCirculation: {
+        title: 'Circulante inicial controlado',
+        subtitle: 'Solo 1.88% del supply entra en mercado el día del lanzamiento.',
+        note: 'Objetivo: proteger el precio, evitar presión inflacionaria y permitir crecimiento orgánico.',
+      },
+      calendar: {
+        title: 'Calendario on-chain',
+        subtitle: 'Cliffs, vestings, quemas y reservas bajo control programado.',
+      },
+      timeline: {
+        title: 'Hitos estratégicos',
+        subtitle: 'Eventos clave que validan el avance del token.',
+      },
+      deflation: {
+        title: 'Modelo deflacionario',
+        subtitle: 'El supply circulante solo crece cuando el ecosistema lo necesita.',
+        bullets: [
+          'Quemas automáticas en ciclos del Ecosistema y Comunidad cada 14 días.',
+          'Bloques técnicos de 1% sin acumulaciones; remanentes menores al 10% se queman.',
+          'LP bloqueada 24 meses, sin inyecciones especulativas ni emisiones extra.',
+        ],
+      },
+      liquidity: {
+        title: 'Liquidez blindada',
+        subtitle: 'Pool WTX/BNB con LP tokens bloqueados mediante multisig y contratos auditados.',
+      },
     },
     
     // Roadmap Page
@@ -593,10 +646,63 @@ export const translations = {
     
     // Tokenomics Page
     tokenomics: {
-      title: 'Tokenomics',
-      placeholder: 'Section Under Development',
-      message: 'Details of the $WTRUSTX economic model will be announced soon.',
-      comingSoon: 'Coming Soon',
+      hero: {
+        badge: 'Economic architecture',
+        title: 'Web3TrustX Tokenomics (WTX)',
+        subtitle: 'Fixed supply, programmed deflation, battle-tested liquidity',
+        description:
+          'WTX powers the ecosystem with auditable cycles, automatic burns and transparent governance aligned with the roadmap.',
+        ctaPrimary: 'Explore distribution',
+        ctaSecondary: 'View calendar',
+      },
+      summary: {
+        title: 'Core parameters',
+        subtitle: 'All data is on-chain, public and auditable.',
+      },
+      metrics: {
+        totalSupply: 'Total supply',
+        network: 'Launch network',
+        price: 'Initial price',
+        fdv: 'Initial FDV',
+        liquidity: 'Initial liquidity',
+        lock: 'Liquidity lock',
+        circulating: 'TGE circulating',
+        ticker: 'Ticker',
+      },
+      principles: {
+        title: 'Guiding principles',
+        subtitle: 'Three pillars sustain the token economy.',
+      },
+      allocation: {
+        title: 'Distribution & unlocks',
+        subtitle: 'Use the chart or cards to drill into every allocation.',
+      },
+      initialCirculation: {
+        title: 'Controlled initial circulating supply',
+        subtitle: 'Only 1.88% of the supply hits the market on launch day.',
+        note: 'Goal: protect price discovery, avoid inflationary pressure and enable organic growth.',
+      },
+      calendar: {
+        title: 'On-chain calendar',
+        subtitle: 'Cliffs, vestings, burns and reserves under programmed control.',
+      },
+      timeline: {
+        title: 'Strategic milestones',
+        subtitle: 'Key events that validate token progress.',
+      },
+      deflation: {
+        title: 'Deflationary engine',
+        subtitle: 'Circulating supply only expands when the ecosystem demands it.',
+        bullets: [
+          'Automatic burns on Ecosystem and Community cycles every 14 days.',
+          'Technical reserve unlocks in 1% blocks with no overlap; <10% leftovers are burned.',
+          'Liquidity pool locked for 24 months with no speculative injections or extra emissions.',
+        ],
+      },
+      liquidity: {
+        title: 'Fortified liquidity',
+        subtitle: 'WTX/BNB pool with LP tokens locked via multisig and audited contracts.',
+      },
     },
     
     // Roadmap Page
