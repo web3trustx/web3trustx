@@ -16,8 +16,7 @@ export default function NewsRibbon() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
-        className="w-full bg-[#0A1220] border-b border-primary/30 relative z-40"
-        style={{ paddingTop: '80px' }} // Offset for fixed header (64px + 16px padding)
+        className="fixed top-16 md:top-20 left-0 right-0 w-full bg-[#0A1220]/95 backdrop-blur-md border-b border-primary/30 z-40"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
