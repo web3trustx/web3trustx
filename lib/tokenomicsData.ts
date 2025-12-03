@@ -99,6 +99,17 @@ export interface CalendarEvent {
 }
 
 // ============================================================================
+// EVENT TYPE LABELS
+// ============================================================================
+export const EVENT_TYPE_LABELS = {
+  unlock: { en: "Unlock", es: "Desbloqueo" },
+  burn: { en: "Burn", es: "Quema" },
+  cliff: { en: "Cliff", es: "Cliff" },
+  tge: { en: "TGE", es: "TGE" },
+  phase: { en: "Phase", es: "Fase" },
+};
+
+// ============================================================================
 // DATOS GLOBALES
 // ============================================================================
 export const GLOBAL_DATA = {

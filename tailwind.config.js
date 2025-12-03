@@ -15,9 +15,9 @@ module.exports = {
           dark: '#008F89',
         },
         dark: {
-          DEFAULT: '#0A1220',
-          lighter: '#1A2332',
-          lightest: '#2A3342',
+          DEFAULT: '#101A2B',
+          lighter: '#1A2840',
+          lightest: '#2A3850',
         },
         accent: {
           cyan: '#00B5AD',
@@ -31,7 +31,7 @@ module.exports = {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-cyber': 'linear-gradient(135deg, #0A1220 0%, #1A2332 50%, #0A1220 100%)',
+        'gradient-cyber': 'linear-gradient(135deg, #101A2B 0%, #1A2840 50%, #101A2B 100%)',
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',

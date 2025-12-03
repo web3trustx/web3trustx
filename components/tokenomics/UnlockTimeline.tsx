@@ -14,7 +14,7 @@ export function UnlockTimeline() {
   });
 
   return (
-    <section className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#04060c] to-[#0a1220] p-6 shadow-2xl">
+    <section className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#06101a] to-[#101A2B] p-6 shadow-2xl">
       <div className="flex flex-col gap-2 pb-6">
         <p className="text-xs uppercase tracking-[0.2em] text-white/50">
           {isSpanish ? "Hitos del token" : "Token milestones"}

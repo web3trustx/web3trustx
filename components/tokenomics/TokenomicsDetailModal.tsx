@@ -141,7 +141,7 @@ export function TokenomicsDetailModal({ category, isOpen, onClose }: TokenomicsD
                     </p>
                     <div className="grid gap-3 md:grid-cols-2">
                       {content.subAllocations.map(sub => (
-                        <div key={sub.id} className="rounded-2xl border border-white/10 bg-[#0A1220]/70 p-4">
+                        <div key={sub.id} className="rounded-2xl border border-white/10 bg-[#101A2B]/70 p-4">
                           <p className="text-sm font-semibold text-white">{sub.name}</p>
                           <p className="text-xs text-white/60">{sub.percentage}% · {formatTokenAmount(sub.tokens)} WTX</p>
                           <p className="mt-2 text-xs text-white/60">{sub.description}</p>

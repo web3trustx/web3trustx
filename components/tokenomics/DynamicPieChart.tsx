@@ -15,9 +15,9 @@ export default function DynamicPieChart({ onCategoryClick }: DynamicPieChartProp
   const [animationComplete, setAnimationComplete] = useState(false);
   const svgRef = useRef<SVGSVGElement>(null);
 
-  const size = 400;
+  const size = 380;
   const center = size / 2;
-  const radius = 150;
+  const radius = 145;
   const innerRadius = 80;
 
   // Calculate pie slices
@@ -80,15 +80,16 @@ export default function DynamicPieChart({ onCategoryClick }: DynamicPieChartProp
   }, []);
 
   return (
-    <div className="relative flex flex-col lg:flex-row items-center justify-center gap-8 py-8">
-      {/* SVG Chart */}
-      <div className="relative">
+    <div className="relative flex flex-col items-center w-full">
+      {/* SVG Chart - Centered */}
+      <div className="relative flex justify-center w-full">
         <svg
           ref={svgRef}
           width={size}
           height={size}
           viewBox={`0 0 ${size} ${size}`}
-          className="transform transition-transform duration-300"
+          className="transform transition-transform duration-300 max-w-full"
+          style={{ maxWidth: `${size}px` }}
         >
           {/* Glow filter */}
           <defs>
@@ -158,7 +159,7 @@ export default function DynamicPieChart({ onCategoryClick }: DynamicPieChartProp
             cx={center}
             cy={center}
             r={innerRadius - 10}
-            fill="#0A1220"
+            fill="#101A2B"
             stroke="rgba(0, 181, 173, 0.3)"
             strokeWidth="2"
             initial={{ scale: 0 }}
@@ -169,10 +170,10 @@ export default function DynamicPieChart({ onCategoryClick }: DynamicPieChartProp
           {/* Center text */}
           <motion.text
             x={center}
-            y={center - 15}
+            y={center - 12}
             textAnchor="middle"
             fill="#00B5AD"
-            fontSize="24"
+            fontSize="22"
             fontWeight="bold"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -182,10 +183,10 @@ export default function DynamicPieChart({ onCategoryClick }: DynamicPieChartProp
           </motion.text>
           <motion.text
             x={center}
-            y={center + 10}
+            y={center + 8}
             textAnchor="middle"
             fill="#ffffff"
-            fontSize="14"
+            fontSize="12"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.3 }}
@@ -194,10 +195,10 @@ export default function DynamicPieChart({ onCategoryClick }: DynamicPieChartProp
           </motion.text>
           <motion.text
             x={center}
-            y={center + 30}
+            y={center + 24}
             textAnchor="middle"
             fill="#6B7280"
-            fontSize="11"
+            fontSize="10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.4 }}
@@ -220,22 +221,22 @@ export default function DynamicPieChart({ onCategoryClick }: DynamicPieChartProp
                 if (!cat) return null;
                 return (
                   <div
-                    className="bg-dark-lighter border rounded-xl px-6 py-4 shadow-2xl min-w-[200px]"
+                    className="bg-dark-lighter border rounded-xl px-4 py-3 shadow-2xl min-w-[180px]"
                     style={{ borderColor: cat.color }}
                   >
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-2xl">{cat.icon}</span>
-                      <span className="text-white font-bold">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-xl">{cat.icon}</span>
+                      <span className="text-white font-bold text-sm">
                         {language === 'es' ? cat.nameEs : cat.name}
                       </span>
                     </div>
-                    <div className="text-2xl font-bold" style={{ color: cat.color }}>
+                    <div className="text-xl font-bold" style={{ color: cat.color }}>
                       {cat.percentage}%
                     </div>
-                    <div className="text-gray-400 text-sm">
+                    <div className="text-gray-400 text-xs">
                       {formatTokenAmount(cat.tokens)} WTX
                     </div>
-                    <div className="mt-2 text-xs text-gray-500">
+                    <div className="mt-1 text-[10px] text-gray-500">
                       {language === 'es' ? 'Clic para más detalles' : 'Click for details'}
                     </div>
                   </div>
@@ -246,37 +247,42 @@ export default function DynamicPieChart({ onCategoryClick }: DynamicPieChartProp
         </AnimatePresence>
       </div>
 
-      {/* Legend */}
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-1 lg:gap-2">
-        {TOKEN_CATEGORIES.map((category, index) => (
-          <motion.button
-            key={category.id}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5 + index * 0.05 }}
-            className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 text-left ${
-              hoveredCategory === category.id
-                ? 'bg-white/10 scale-105'
-                : 'hover:bg-white/5'
-            }`}
-            onMouseEnter={() => setHoveredCategory(category.id)}
-            onMouseLeave={() => setHoveredCategory(null)}
-            onClick={() => onCategoryClick?.(category)}
-          >
-            <div
-              className="w-4 h-4 rounded-sm flex-shrink-0"
-              style={{ backgroundColor: category.color }}
-            />
-            <div className="flex-1 min-w-0">
-              <div className="text-sm font-medium text-white truncate">
-                {language === 'es' ? category.nameEs : category.name}
+      {/* Legend - Below chart, single column */}
+      <div className="w-full mt-6 pt-4 border-t border-white/10">
+        <p className="text-[10px] uppercase tracking-[0.2em] text-white/40 mb-3">
+          {language === 'es' ? 'Distribución por categoría' : 'Distribution by category'}
+        </p>
+        <div className="flex flex-col gap-2">
+          {TOKEN_CATEGORIES.map((category, index) => (
+            <motion.button
+              key={category.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 + index * 0.03 }}
+              className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 text-left ${
+                hoveredCategory === category.id
+                  ? 'bg-white/10 scale-[1.02]'
+                  : 'hover:bg-white/5'
+              }`}
+              onMouseEnter={() => setHoveredCategory(category.id)}
+              onMouseLeave={() => setHoveredCategory(null)}
+              onClick={() => onCategoryClick?.(category)}
+            >
+              <div
+                className="w-3 h-3 rounded-sm flex-shrink-0"
+                style={{ backgroundColor: category.color }}
+              />
+              <div className="flex items-center justify-between flex-1">
+                <span className="text-sm font-medium text-white">
+                  {language === 'es' ? category.nameEs : category.name}
+                </span>
+                <span className="text-sm text-gray-400 ml-4">
+                  {category.percentage}%
+                </span>
               </div>
-              <div className="text-xs text-gray-400">
-                {category.percentage}% • {formatTokenAmount(category.tokens)}
-              </div>
-            </div>
-          </motion.button>
-        ))}
+            </motion.button>
+          ))}
+        </div>
       </div>
     </div>
   );
