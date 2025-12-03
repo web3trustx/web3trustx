@@ -20,11 +20,8 @@ export function Calendar() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedDayEvents, setSelectedDayEvents] = useState<CalendarEvent[]>([]);
   const [startDate, setStartDate] = useState<Date>(() => {
-    // Empezar desde ayer
-    const today = new Date();
-    const yesterday = new Date(today);
-    yesterday.setDate(today.getDate() - 1);
-    return yesterday;
+    // Empezar desde hoy
+    return new Date();
   });
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const [viewMode, setViewMode] = useState<"daily" | "monthly">("daily");
