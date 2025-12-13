@@ -22,11 +22,6 @@ export default function NewsRibbon() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
             {/* Content */}
             <div className="flex items-start sm:items-center gap-2 sm:gap-3 flex-1 w-full sm:w-auto">
-              {/* NEW Badge with strong pulse animation */}
-              <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-red-600 text-white whitespace-nowrap flex-shrink-0 pulse-strong">
-                {t.newsRibbon.badge}
-              </span>
-              
               {/* Message */}
               <div className="flex-1 min-w-0">
                 <p className="text-white font-semibold text-sm sm:text-base leading-tight">

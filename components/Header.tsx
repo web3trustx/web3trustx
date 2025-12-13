@@ -8,18 +8,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function Header() {
   const { language, setLanguage, t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isTrustXDataOpen, setIsTrustXDataOpen] = useState(false);
 
   const menuItems = [
     { href: '/', label: t.nav.home },
-    { href: '/about', label: t.nav.about },
     { href: '/ecosystem', label: t.nav.ecosystem },
     { href: '/tokenomics', label: t.nav.tokenomics },
     { href: '/roadmap', label: t.nav.roadmap },
     { href: '/whitepaper', label: t.nav.whitepaper },
     { href: '/leaderboard', label: t.nav.leaderboard },
-    { href: '/leaderboard#airdrop-terms', label: t.nav.airdropTerms },
     { href: '/contact', label: t.nav.contact },
+    { href: '/about', label: t.nav.about },
   ];
 
   return (
@@ -40,7 +38,7 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
-            {menuItems.slice(0, 8).map((item) => (
+            {menuItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -49,46 +47,6 @@ export default function Header() {
                 {item.label}
               </Link>
             ))}
-            
-            {/* TrustXData Dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => setIsTrustXDataOpen(true)}
-              onMouseLeave={() => setIsTrustXDataOpen(false)}
-            >
-              <button className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-primary hover:bg-white/5 rounded-lg transition-all duration-200 flex items-center gap-1">
-                {t.nav.trustxdata}
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              
-              <AnimatePresence>
-                {isTrustXDataOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 mt-1 w-48 glass-effect border border-white/10 rounded-lg shadow-xl overflow-hidden"
-                  >
-                    <Link
-                      href="/trustxdata/api"
-                      className="block px-4 py-3 text-sm font-medium text-gray-300 hover:text-primary hover:bg-white/5 transition-all duration-200"
-                    >
-                      {t.nav.api}
-                    </Link>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            <Link
-              href={menuItems[8].href}
-              className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-primary hover:bg-white/5 rounded-lg transition-all duration-200"
-            >
-              {menuItems[8].label}
-            </Link>
           </div>
 
           {/* Language Toggle & Mobile Menu */}
@@ -163,43 +121,6 @@ export default function Header() {
                     {item.label}
                   </Link>
                 ))}
-                
-                {/* TrustXData submenu for mobile */}
-                <div className="px-4 py-2">
-                  <button
-                    onClick={() => setIsTrustXDataOpen(!isTrustXDataOpen)}
-                    className="w-full text-left text-sm font-medium text-gray-300 hover:text-primary transition-all duration-200 flex items-center justify-between"
-                  >
-                    {t.nav.trustxdata}
-                    <svg 
-                      className={`w-4 h-4 transition-transform duration-200 ${isTrustXDataOpen ? 'rotate-180' : ''}`} 
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  <AnimatePresence>
-                    {isTrustXDataOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="ml-4 mt-2 space-y-1"
-                      >
-                        <Link
-                          href="/trustxdata/api"
-                          onClick={() => setIsMenuOpen(false)}
-                          className="block px-3 py-2 text-sm text-gray-400 hover:text-primary hover:bg-white/5 rounded-lg transition-all duration-200"
-                        >
-                          {t.nav.api}
-                        </Link>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
               </div>
             </motion.div>
           )}

@@ -3,7 +3,6 @@
 import { ReactNode } from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import NewsRibbon from './NewsRibbon';
 
 interface LayoutProps {
   children: ReactNode;
@@ -19,7 +18,6 @@ export default function Layout({ children }: LayoutProps) {
       </div>
 
       <Header />
-      <NewsRibbon />
       
       <main className="flex-grow relative z-10">
         {children}

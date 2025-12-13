@@ -90,6 +90,11 @@ export const translations = {
             tagline: 'Mide la fiabilidad, no la fama.',
             description: 'Asigna una puntuación objetiva basada en liquidez, comportamiento histórico y reputación del creador.',
           },
+          trustxdata: {
+            name: 'TrustXData',
+            tagline: 'Infraestructura de datos verificados.',
+            description: 'API centralizada que alimenta todo el ecosistema con datos blockchain en tiempo real, análisis de contratos y métricas de confianza verificadas.',
+          },
           trustxdex: {
             name: 'TrustXDex',
             tagline: 'Transparencia de mercado en tiempo real.',
@@ -590,6 +595,11 @@ export const translations = {
             name: 'TrustXScore',
             tagline: 'Measure reliability, not fame.',
             description: 'Assigns an objective score based on liquidity, historical behavior, and creator reputation.',
+          },
+          trustxdata: {
+            name: 'TrustXData',
+            tagline: 'Verified data infrastructure.',
+            description: 'Centralized API powering the entire ecosystem with real-time blockchain data, contract analysis, and verified trust metrics.',
           },
           trustxdex: {
             name: 'TrustXDex',
