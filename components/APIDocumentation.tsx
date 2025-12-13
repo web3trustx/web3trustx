@@ -26,180 +26,270 @@ interface Endpoint {
 
 const endpoints: Endpoint[] = [
   {
-    id: 'analyze-contract',
-    method: 'POST',
-    route: '/api/v1/contracts/analyze',
-    description: 'Analyze a smart contract for security risks and vulnerabilities',
-    category: 'contracts',
-    parameters: [
-      { name: 'address', type: 'string', required: true, description: 'Contract address to analyze' },
-      { name: 'chain', type: 'string', required: true, description: 'Blockchain network (bnb, solana)' },
-      { name: 'deep_scan', type: 'boolean', required: false, description: 'Enable deep vulnerability scan' },
-    ],
-    response: `{
-  "address": "0x1234...5678",
-  "chain": "bnb",
-  "trust_score": 85,
-  "risk_level": "low",
-  "vulnerabilities": [],
-  "ownership": {
-    "renounced": false,
-    "owner": "0xabcd...ef12"
-  },
-  "liquidity_locked": true,
-  "analyzed_at": "2025-11-26T10:30:00Z"
-}`,
-    codeExamples: {
-      javascript: `const response = await fetch('https://api.web3trustx.com/api/v1/contracts/analyze', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'X-API-Key': 'YOUR_API_KEY'
-  },
-  body: JSON.stringify({
-    address: '0x1234...5678',
-    chain: 'bnb',
-    deep_scan: true
-  })
-});
-
-const data = await response.json();
-console.log(data);`,
-      python: `import requests
-
-url = 'https://api.web3trustx.com/api/v1/contracts/analyze'
-headers = {
-    'Content-Type': 'application/json',
-    'X-API-Key': 'YOUR_API_KEY'
-}
-payload = {
-    'address': '0x1234...5678',
-    'chain': 'bnb',
-    'deep_scan': True
-}
-
-response = requests.post(url, json=payload, headers=headers)
-data = response.json()
-print(data)`,
-      csharp: `using System.Net.Http;
-using System.Text.Json;
-
-var client = new HttpClient();
-client.DefaultRequestHeaders.Add("X-API-Key", "YOUR_API_KEY");
-
-var payload = new {
-    address = "0x1234...5678",
-    chain = "bnb",
-    deep_scan = true
-};
-
-var response = await client.PostAsJsonAsync(
-    "https://api.web3trustx.com/api/v1/contracts/analyze",
-    payload
-);
-
-var data = await response.Content.ReadAsStringAsync();
-Console.WriteLine(data);`,
-    },
-  },
-  {
-    id: 'get-token-info',
+    id: 'token-metadata',
     method: 'GET',
-    route: '/api/v1/tokens/{address}',
-    description: 'Get detailed information about a token',
+    route: '/beta/evm/:chain/:address/metadata',
+    description: 'Get token metadata including name, symbol, decimals, and basic information',
     category: 'tokens',
     parameters: [
+      { name: 'chain', type: 'string', required: true, description: 'Blockchain network (bsc, ethereum)' },
       { name: 'address', type: 'string', required: true, description: 'Token contract address' },
-      { name: 'chain', type: 'string', required: true, description: 'Blockchain network' },
     ],
     response: `{
-  "address": "0x1234...5678",
-  "name": "Example Token",
-  "symbol": "EXT",
-  "decimals": 18,
-  "total_supply": "1000000000",
-  "price_usd": "0.00085",
-  "market_cap": 850000,
-  "holders": 1250,
-  "liquidity_usd": 51000,
-  "trust_score": 78
+  "success": true,
+  "data": {
+    "address": "0x55d398326f99059ff775485246999027b3197955",
+    "name": "Tether USD",
+    "symbol": "USDT",
+    "decimals": 18,
+    "totalSupply": "26625413040.487393470854834021",
+    "chain": "bsc"
+  }
 }`,
     codeExamples: {
       javascript: `const response = await fetch(
-  'https://api.web3trustx.com/api/v1/tokens/0x1234...5678?chain=bnb',
-  {
-    headers: {
-      'X-API-Key': 'YOUR_API_KEY'
-    }
-  }
+  'https://api.web3trustx.com/beta/evm/bsc/0x55d398...b3197955/metadata'
 );
 
 const data = await response.json();
 console.log(data);`,
       python: `import requests
 
-url = 'https://api.web3trustx.com/api/v1/tokens/0x1234...5678'
-params = {'chain': 'bnb'}
-headers = {'X-API-Key': 'YOUR_API_KEY'}
+url = 'https://api.web3trustx.com/beta/evm/bsc/0x55d398...b3197955/metadata'
 
-response = requests.get(url, params=params, headers=headers)
+response = requests.get(url)
 data = response.json()
 print(data)`,
       csharp: `var client = new HttpClient();
-client.DefaultRequestHeaders.Add("X-API-Key", "YOUR_API_KEY");
 
 var response = await client.GetStringAsync(
-    "https://api.web3trustx.com/api/v1/tokens/0x1234...5678?chain=bnb"
+    "https://api.web3trustx.com/beta/evm/bsc/0x55d398...b3197955/metadata"
 );
 
 Console.WriteLine(response);`,
     },
   },
   {
-    id: 'wallet-analysis',
+    id: 'token-price',
     method: 'GET',
-    route: '/api/v1/wallets/{address}/analysis',
-    description: 'Analyze wallet behavior and risk profile',
-    category: 'wallets',
+    route: '/beta/evm/:chain/:address/price',
+    description: 'Get current token price in USD with market data',
+    category: 'tokens',
     parameters: [
-      { name: 'address', type: 'string', required: true, description: 'Wallet address' },
-      { name: 'chain', type: 'string', required: true, description: 'Blockchain network' },
+      { name: 'chain', type: 'string', required: true, description: 'Blockchain network (bsc, ethereum)' },
+      { name: 'address', type: 'string', required: true, description: 'Token contract address' },
     ],
     response: `{
-  "address": "0xabcd...ef12",
-  "risk_score": 25,
-  "risk_level": "low",
-  "transaction_count": 342,
-  "first_seen": "2024-01-15T08:20:00Z",
-  "labels": ["trader", "dex_user"],
-  "suspicious_activity": false
+  "success": true,
+  "data": {
+    "address": "0x55d398326f99059ff775485246999027b3197955",
+    "priceUSD": "1.0003",
+    "priceChange24h": "0.02",
+    "marketCap": "26641789123.45",
+    "chain": "bsc"
+  }
 }`,
     codeExamples: {
       javascript: `const response = await fetch(
-  'https://api.web3trustx.com/api/v1/wallets/0xabcd...ef12/analysis?chain=bnb',
-  {
-    headers: {
-      'X-API-Key': 'YOUR_API_KEY'
-    }
-  }
+  'https://api.web3trustx.com/beta/evm/bsc/0x55d398...b3197955/price'
 );
 
 const data = await response.json();
 console.log(data);`,
       python: `import requests
 
-url = 'https://api.web3trustx.com/api/v1/wallets/0xabcd...ef12/analysis'
-params = {'chain': 'bnb'}
-headers = {'X-API-Key': 'YOUR_API_KEY'}
+url = 'https://api.web3trustx.com/beta/evm/bsc/0x55d398...b3197955/price'
 
-response = requests.get(url, params=params, headers=headers)
+response = requests.get(url)
 data = response.json()
 print(data)`,
       csharp: `var client = new HttpClient();
-client.DefaultRequestHeaders.Add("X-API-Key", "YOUR_API_KEY");
 
 var response = await client.GetStringAsync(
-    "https://api.web3trustx.com/api/v1/wallets/0xabcd...ef12/analysis?chain=bnb"
+    "https://api.web3trustx.com/beta/evm/bsc/0x55d398...b3197955/price"
+);
+
+Console.WriteLine(response);`,
+    },
+  },
+  {
+    id: 'token-liquidity',
+    method: 'GET',
+    route: '/beta/evm/:chain/:address/liquidity',
+    description: 'Get token liquidity information across DEXs',
+    category: 'tokens',
+    parameters: [
+      { name: 'chain', type: 'string', required: true, description: 'Blockchain network (bsc, ethereum)' },
+      { name: 'address', type: 'string', required: true, description: 'Token contract address' },
+    ],
+    response: `{
+  "success": true,
+  "data": {
+    "address": "0x55d398326f99059ff775485246999027b3197955",
+    "totalLiquidityUSD": "1523456789.12",
+    "pools": [
+      {
+        "dex": "PancakeSwap",
+        "liquidityUSD": "987654321.00",
+        "pairAddress": "0xabc..."
+      }
+    ],
+    "chain": "bsc"
+  }
+}`,
+    codeExamples: {
+      javascript: `const response = await fetch(
+  'https://api.web3trustx.com/beta/evm/bsc/0x55d398...b3197955/liquidity'
+);
+
+const data = await response.json();
+console.log(data);`,
+      python: `import requests
+
+url = 'https://api.web3trustx.com/beta/evm/bsc/0x55d398...b3197955/liquidity'
+
+response = requests.get(url)
+data = response.json()
+print(data)`,
+      csharp: `var client = new HttpClient();
+
+var response = await client.GetStringAsync(
+    "https://api.web3trustx.com/beta/evm/bsc/0x55d398...b3197955/liquidity"
+);
+
+Console.WriteLine(response);`,
+    },
+  },
+  {
+    id: 'token-volume',
+    method: 'GET',
+    route: '/beta/evm/:chain/:address/volume',
+    description: 'Get 24h trading volume and transaction metrics',
+    category: 'tokens',
+    parameters: [
+      { name: 'chain', type: 'string', required: true, description: 'Blockchain network (bsc, ethereum)' },
+      { name: 'address', type: 'string', required: true, description: 'Token contract address' },
+    ],
+    response: `{
+  "success": true,
+  "data": {
+    "address": "0x55d398326f99059ff775485246999027b3197955",
+    "volume24hUSD": "456789012.34",
+    "transactions24h": 125847,
+    "buys24h": 67432,
+    "sells24h": 58415,
+    "chain": "bsc"
+  }
+}`,
+    codeExamples: {
+      javascript: `const response = await fetch(
+  'https://api.web3trustx.com/beta/evm/bsc/0x55d398...b3197955/volume'
+);
+
+const data = await response.json();
+console.log(data);`,
+      python: `import requests
+
+url = 'https://api.web3trustx.com/beta/evm/bsc/0x55d398...b3197955/volume'
+
+response = requests.get(url)
+data = response.json()
+print(data)`,
+      csharp: `var client = new HttpClient();
+
+var response = await client.GetStringAsync(
+    "https://api.web3trustx.com/beta/evm/bsc/0x55d398...b3197955/volume"
+);
+
+Console.WriteLine(response);`,
+    },
+  },
+  {
+    id: 'token-holders',
+    method: 'GET',
+    route: '/beta/evm/:chain/:address/holders',
+    description: 'Get token holder count and distribution statistics',
+    category: 'tokens',
+    parameters: [
+      { name: 'chain', type: 'string', required: true, description: 'Blockchain network (bsc, ethereum)' },
+      { name: 'address', type: 'string', required: true, description: 'Token contract address' },
+    ],
+    response: `{
+  "success": true,
+  "data": {
+    "address": "0x55d398326f99059ff775485246999027b3197955",
+    "totalHolders": 5847291,
+    "top10HoldersPercent": "45.23",
+    "top50HoldersPercent": "67.89",
+    "chain": "bsc"
+  }
+}`,
+    codeExamples: {
+      javascript: `const response = await fetch(
+  'https://api.web3trustx.com/beta/evm/bsc/0x55d398...b3197955/holders'
+);
+
+const data = await response.json();
+console.log(data);`,
+      python: `import requests
+
+url = 'https://api.web3trustx.com/beta/evm/bsc/0x55d398...b3197955/holders'
+
+response = requests.get(url)
+data = response.json()
+print(data)`,
+      csharp: `var client = new HttpClient();
+
+var response = await client.GetStringAsync(
+    "https://api.web3trustx.com/beta/evm/bsc/0x55d398...b3197955/holders"
+);
+
+Console.WriteLine(response);`,
+    },
+  },
+  {
+    id: 'token-scan',
+    method: 'GET',
+    route: '/beta/evm/:chain/:address/scan',
+    description: 'Comprehensive token security scan with risk analysis',
+    category: 'security',
+    parameters: [
+      { name: 'chain', type: 'string', required: true, description: 'Blockchain network (bsc, ethereum)' },
+      { name: 'address', type: 'string', required: true, description: 'Token contract address' },
+    ],
+    response: `{
+  "success": true,
+  "data": {
+    "address": "0x55d398326f99059ff775485246999027b3197955",
+    "riskScore": 15,
+    "riskLevel": "low",
+    "contractVerified": true,
+    "honeypot": false,
+    "canSell": true,
+    "ownershipRenounced": true,
+    "liquidityLocked": true,
+    "warnings": [],
+    "chain": "bsc"
+  }
+}`,
+    codeExamples: {
+      javascript: `const response = await fetch(
+  'https://api.web3trustx.com/beta/evm/bsc/0x55d398...b3197955/scan'
+);
+
+const data = await response.json();
+console.log(data);`,
+      python: `import requests
+
+url = 'https://api.web3trustx.com/beta/evm/bsc/0x55d398...b3197955/scan'
+
+response = requests.get(url)
+data = response.json()
+print(data)`,
+      csharp: `var client = new HttpClient();
+
+var response = await client.GetStringAsync(
+    "https://api.web3trustx.com/beta/evm/bsc/0x55d398...b3197955/scan"
 );
 
 Console.WriteLine(response);`,

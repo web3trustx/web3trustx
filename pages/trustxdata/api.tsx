@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useLanguage } from '../../lib/LanguageContext';
 import { motion } from 'framer-motion';
-import APIKeyForm from '../../components/APIKeyForm';
+import PortalRegistrationForm from '../../components/PortalRegistrationForm';
 import APIDocumentation from '../../components/APIDocumentation';
 
 export default function TrustXDataAPI() {
@@ -47,7 +47,7 @@ export default function TrustXDataAPI() {
         </div>
       </section>
 
-      {/* API Key Form Section */}
+      {/* Portal Registration Form Section */}
       <section id="api-key-form" className="py-20 px-4 sm:px-6 lg:px-8 bg-white/5">
         <div className="container mx-auto max-w-3xl">
           <motion.div
@@ -56,7 +56,7 @@ export default function TrustXDataAPI() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <APIKeyForm />
+            <PortalRegistrationForm />
           </motion.div>
         </div>
       </section>
