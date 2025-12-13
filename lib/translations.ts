@@ -373,7 +373,7 @@ export const translations = {
         title: 'API de TrustXData',
         subtitle: 'Tu Hub Central de Datos Web3',
         description: 'Accede a datos verificados de blockchain, análisis de contratos y métricas de confianza en tiempo real. Portal de desarrolladores y centro de confianza para integrar datos seguros en tus aplicaciones.',
-        ctaPrimary: 'Empezar',
+        ctaPrimary: 'Abrir App',
         ctaSecondary: 'Explorar Documentación',
       },
       keyForm: {
@@ -938,7 +938,7 @@ export const translations = {
         title: 'TrustXData API',
         subtitle: 'Your Web3 Data Hub',
         description: 'Access verified blockchain data, contract analysis, and real-time trust metrics. Developer portal and trust center to integrate secure data into your applications.',
-        ctaPrimary: 'Get Started',
+        ctaPrimary: 'Open App',
         ctaSecondary: 'Explore Documentation',
       },
       keyForm: {

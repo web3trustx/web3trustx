@@ -1,11 +1,8 @@
 'use client';
 
 import Head from 'next/head';
-import Link from 'next/link';
 import { useLanguage } from '../../lib/LanguageContext';
 import { motion } from 'framer-motion';
-import PortalRegistrationForm from '../../components/PortalRegistrationForm';
-import PortalLoginForm from '../../components/PortalLoginForm';
 import APIDocumentation from '../../components/APIDocumentation';
 
 export default function TrustXDataAPI() {
@@ -37,41 +34,13 @@ export default function TrustXDataAPI() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#api-key-form" className="btn-primary">
+              <a href="https://portal.web3trustx.com/" className="btn-primary">
                 {t.trustxdataApi.hero.ctaPrimary}
               </a>
               <a href="#documentation" className="btn-secondary">
                 {t.trustxdataApi.hero.ctaSecondary}
               </a>
             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Portal Registration Form Section */}
-      <section id="api-key-form" className="py-20 px-4 sm:px-6 lg:px-8 bg-white/5">
-        <div className="container mx-auto max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <PortalRegistrationForm />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Portal Login Form Section */}
-      <section id="login-form" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <PortalLoginForm />
           </motion.div>
         </div>
       </section>
