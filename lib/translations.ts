@@ -528,6 +528,29 @@ export const translations = {
         unexpectedError: 'Ocurrió un error inesperado',
       },
     },
+
+    // Portal Login Form
+    portalLogin: {
+      title: 'Inicia Sesión en el Portal TrustXData',
+      subtitle: 'Accede a tu dashboard y claves API',
+      email: 'Correo Electrónico',
+      emailPlaceholder: 'tu@ejemplo.com',
+      password: 'Contraseña',
+      passwordPlaceholder: '••••••••',
+      login: 'Iniciar Sesión',
+      loggingIn: 'Iniciando Sesión...',
+      noAccount: '¿No tienes cuenta?',
+      register: 'Regístrate aquí',
+      success: '¡Inicio de Sesión Exitoso!',
+      successMessage: 'Redirigiendo al dashboard...',
+      errors: {
+        emailRequired: 'El correo electrónico es obligatorio',
+        emailInvalid: 'Formato de correo inválido',
+        passwordRequired: 'La contraseña es obligatoria',
+        loginFailed: 'Error al iniciar sesión. Verifica tus credenciales.',
+        unexpectedError: 'Ocurrió un error inesperado',
+      },
+    },
     
     // Footer
     footer: {
@@ -1067,6 +1090,29 @@ export const translations = {
         confirmPasswordRequired: 'You must confirm the password',
         passwordMismatch: 'Passwords do not match',
         registrationFailed: 'Registration failed. Please try again.',
+        unexpectedError: 'An unexpected error occurred',
+      },
+    },
+
+    // Portal Login Form
+    portalLogin: {
+      title: 'Login to TrustXData Portal',
+      subtitle: 'Access your dashboard and API keys',
+      email: 'Email Address',
+      emailPlaceholder: 'you@example.com',
+      password: 'Password',
+      passwordPlaceholder: '••••••••',
+      login: 'Login',
+      loggingIn: 'Logging In...',
+      noAccount: "Don't have an account?",
+      register: 'Register here',
+      success: 'Login Successful!',
+      successMessage: 'Redirecting to dashboard...',
+      errors: {
+        emailRequired: 'Email is required',
+        emailInvalid: 'Invalid email format',
+        passwordRequired: 'Password is required',
+        loginFailed: 'Login failed. Check your credentials.',
         unexpectedError: 'An unexpected error occurred',
       },
     },

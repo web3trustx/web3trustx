@@ -92,8 +92,8 @@ export default function PortalRegistrationForm() {
     setLoading(true);
 
     try {
-      // Llamada a la API del portal
-      const response = await fetch('https://portal.web3trustx.com/api/register', {
+      // Llamada a la API del portal (relativa, para evitar CORS)
+      const response = await fetch('https://api.web3trustx.com/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -281,7 +281,7 @@ export default function PortalRegistrationForm() {
 
         <p className="text-center text-sm text-gray-400">
           {t.portalRegister.hasAccount || 'Already have an account?'}{' '}
-          <a href="https://portal.web3trustx.com/login" className="text-primary hover:underline">
+          <a href="#login-form" className="text-primary hover:underline">
             {t.portalRegister.login || 'Login here'}
           </a>
         </p>
